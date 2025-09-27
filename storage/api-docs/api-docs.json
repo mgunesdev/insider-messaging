@@ -1,0 +1,78 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Insider Messaging API",
+        "description": "Laravel tabanlı mesaj gönderim servisi için API dokümantasyonu",
+        "contact": {
+            "email": "support@example.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/api/messages/sent": {
+            "get": {
+                "tags": [
+                    "Messages"
+                ],
+                "summary": "Get list of sent messages",
+                "description": "Returns provider messageIds of sent messages",
+                "operationId": "getSentMessages",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "to": {
+                                                        "type": "string",
+                                                        "example": "+905555555555"
+                                                    },
+                                                    "messageId": {
+                                                        "type": "string",
+                                                        "example": "abc-123"
+                                                    },
+                                                    "sent_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-09-27T11:20:31Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Messages",
+            "description": "Messages"
+        }
+    ]
+}
